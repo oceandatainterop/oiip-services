@@ -1,0 +1,28 @@
+<dataConfig>
+    <dataSource driver="net.ucanaccess.jdbc.UcanaccessDriver" type="JdbcDataSource" url="jdbc:ucanaccess://${solr.install.dir}/server/solr/oiiptest/database/Tagbase4-9-bigdata.mdb;memory=false" />
+    <document>
+        <entity name="FishInfo" query="select 'FishInfo_' + CStr(FishID) as id, FishID, SpeciesTSN from FishInfo;">
+        	<field column="id" name="id" />
+            <field column="FishID" name="FishID" />
+            <field column="SpeciesTSN" name="SpeciesTSN" />
+        </entity>
+        <entity name="TagInfo" query="select 'TagInfo_' + CStr(TagID) as id, FishID, TagID, TagPTTID, TagCode, TagManufacturer, TagModel, BinSampleInterval from TagInfo;">
+        	<field column="id" name="id" />
+            <field column="FishID" name="FishID" />
+            <field column="TagID" name="TagID" />
+        	<field column="TagPTTID" name="TagPTTID" />
+            <field column="TagCode" name="TagCode" />
+            <field column="TagManufacturer" name="TagManufacturer" />
+        	<field column="TagModel" name="TagModel" />
+            <field column="BinSampleInterval" name="BinSampleInterval" />
+        </entity>
+        <entity name="SpeciesInfo" query="select 'SpeciesInfo_' + CStr(SpeciesTSN) as id, SpeciesTSN, CommonName, ScientificName, FAOCode from SpeciesInfo">
+        	<field column="id" name="id" />
+            <field column="SpeciesTSN" name="SpeciesTSN" />
+            <field column="CommonName" name="CommonName" />
+            <field column="ScientificName" name="ScientificName" />
+            <field column="FAOCode" name="FAOCode" />
+        </entity>
+    </document>
+</dataConfig>
+
