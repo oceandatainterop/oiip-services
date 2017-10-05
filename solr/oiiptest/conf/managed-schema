@@ -407,8 +407,17 @@
   <fieldType name="tints" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
   <fieldType name="tlong" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" precisionStep="8"/>
   <fieldType name="tlongs" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <field name="BinSampleInterval" type="string" indexed="true" stored="true"/>
+  <field name="CommonName" type="string" indexed="true" stored="true"/>
+  <field name="FAOCode" type="string" indexed="true" stored="true"/>
   <field name="FishID" type="string" indexed="true" stored="true"/>
+  <field name="ScientificName" type="string" indexed="true" stored="true"/>
   <field name="SpeciesTSN" type="string" indexed="true" stored="true"/>
+  <field name="TagCode" type="string" indexed="true" stored="true"/>
+  <field name="TagID" type="string" indexed="true" stored="true"/>
+  <field name="TagManufacturer" type="string" indexed="true" stored="true"/>
+  <field name="TagModel" type="string" indexed="true" stored="true"/>
+  <field name="TagPTTID" type="string" indexed="true" stored="true"/>
   <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
   <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
   <field name="_version_" type="long" indexed="false" stored="false"/>

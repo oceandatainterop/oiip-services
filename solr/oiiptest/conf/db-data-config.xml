@@ -15,6 +15,16 @@
             <field column="TagManufacturer" name="TagManufacturer" />
         	<field column="TagModel" name="TagModel" />
             <field column="BinSampleInterval" name="BinSampleInterval" />
+            <field column="DateTime_Deploy" name="DateTime_Deploy" />
+            <field column="DateTime_Popoff" name="DateTime_Popoff" />
+            <field column="OceanBasin_Deploy" name="OceanBasin_Deploy" />
+            <field column="Site_Deploy" name="Site_Deploy" />
+            <field column="Location_Deploy" name="Location_Deploy" />
+            <field column="Country_Deploy" name="Country_Deploy" />
+            <field column="Lat_Deploy" name="Lat_Deploy" />
+            <field column="Lon_Deploy" name="Lon_Deploy" />
+            <field column="Lat_Popoff" name="Lat_Popoff" />
+            <field column="Lon_Popoff" name="Lon_Popoff" />
         </entity>
         <entity name="SpeciesInfo" query="select 'SpeciesInfo_' + CStr(SpeciesTSN) as id, SpeciesTSN, CommonName, ScientificName, FAOCode from SpeciesInfo">
         	<field column="id" name="id" />
