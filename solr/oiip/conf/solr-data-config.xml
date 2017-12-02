@@ -22,7 +22,7 @@
         password="" />
     <document name="oiip">
         <entity name="mview_vis_data" pk="id" 
-            query="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name from mview_vis_data;"
+            query="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name, lat::text || ',' || lon::text AS geom from mview_vis_data;"
             deltaImportQuery="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name from mview_vis_data where 'vis_'||row_number() OVER () = '${dih.delta.id}';"
             deltaQuery="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
@@ -39,6 +39,7 @@
             <field column="measurement_standard_units" name="measurement_standard_units" />
             <field column="instrument_name" name="instrument_name" />
             <field column="platform_name" name="platform_name" />
+            <field column="geom" name="geom" />
         </entity>
     </document>
 </dataConfig>

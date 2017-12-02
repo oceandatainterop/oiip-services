@@ -421,6 +421,7 @@
   <field name="depth" type="double" indexed="true" stored="true"/>
   <field name="description" type="text_general" indexed="true" stored="true"/>
   <field name="features" type="text_general" multiValued="true" indexed="true" stored="true"/>
+  <field name="geom" type="location" indexed="true" stored="true"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="id_instrument" type="long" indexed="true" stored="true"/>
   <field name="id_platform" type="long" indexed="true" stored="true"/>
@@ -457,6 +458,7 @@
   <dynamicField name="ignored_*" type="ignored" multiValued="true"/>
   <dynamicField name="random_*" type="random"/>
   <dynamicField name="attr_*" type="text_general" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_geom" type="location" indexed="true" stored="true"/>
   <dynamicField name="*_txt" type="text_general" multiValued="true" indexed="true" stored="true"/>
   <dynamicField name="*_dts" type="date" multiValued="true" indexed="true" stored="true"/>
   <dynamicField name="*_tdt" type="tdate" indexed="true" stored="true"/>
