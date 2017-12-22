@@ -17,28 +17,29 @@
 
 <dataConfig>
     <dataSource driver="org.postgresql.Driver"
-        url="jdbc:postgresql://localhost:5432/spurs"
-        user="spurs"
+        url="jdbc:postgresql://localhost:5432/tagbase"
+        user="tagbase"
         password="" />
     <document name="oiip">
         <entity name="mview_vis_data" pk="id" 
-            query="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name, lat::text || ',' || lon::text AS geom from mview_vis_data;"
-            deltaImportQuery="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name from mview_vis_data where 'vis_'||row_number() OVER () = '${dih.delta.id}';"
-            deltaQuery="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'tag_'||row_number as id, row_number, submission_id, tag_id, variable_value, variable_name, variable_units, depth, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
+            deltaImportQuery="SELECT 'tag_'||row_number as id, row_number, submission_id, tag_id, variable_value, variable_name, variable_units, depth, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where 'tag_'||row_number = '${dih.delta.id}';"
+            deltaQuery="SELECT 'tag_'||row_number as id, row_number, submission_id, tag_id, variable_value, variable_name, variable_units, depth, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
-            <field column="nc_id" name="nc_id" />
-            <field column="id_platform" name="id_platform" />
-            <field column="id_instrument" name="id_instrument" />
-            <field column="time" name="time" />
-            <field column="date_time" name="date_time" />
+            <field column="row_number" name="row_number" />
+            <field column="submission_id" name="submission_id" />
+            <field column="tag_id" name="tag_id" />
+            <field column="variable_value" name="variable_value" />
+            <field column="variable_name" name="variable_name" />
+            <field column="variable_units" name="variable_units" />
+            <field column="depth" name="depth" />
+            <field column="match_up_time_difference" name="match_up_time_difference" />
+            <field column="data_date_time" name="data_date_time" />
+            <field column="position_date_time" name="position_date_time" />
             <field column="lat" name="lat" />
             <field column="lon" name="lon" />
-            <field column="depth" name="depth" />
-            <field column="measurement_value" name="measurement_value" />
-            <field column="measurement_standard_name" name="measurement_standard_name" />
-            <field column="measurement_standard_units" name="measurement_standard_units" />
-            <field column="instrument_name" name="instrument_name" />
-            <field column="platform_name" name="platform_name" />
+            <field column="lat_err" name="lat_err" />
+            <field column="lon_err" name="lon_err" />
             <field column="geom" name="geom" />
         </entity>
     </document>

@@ -1,0 +1,45 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<dataConfig>
+    <dataSource driver="org.postgresql.Driver"
+        url="jdbc:postgresql://localhost:5432/spurs"
+        user="spurs"
+        password="" />
+    <document name="oiip">
+        <entity name="mview_vis_data" pk="id" 
+            query="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name, lat::text || ',' || lon::text AS geom from mview_vis_data;"
+            deltaImportQuery="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name from mview_vis_data where 'vis_'||row_number() OVER () = '${dih.delta.id}';"
+            deltaQuery="SELECT 'vis_'||row_number() OVER () as id, nc_id, id_platform, id_instrument, time, date_time, lat,  lon, depth, measurement_value, measurement_standard_name, measuement_standard_units as measurement_standard_units, instrument_name, platform_name from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
+            <field column="id" name="id" />
+            <field column="nc_id" name="nc_id" />
+            <field column="id_platform" name="id_platform" />
+            <field column="id_instrument" name="id_instrument" />
+            <field column="time" name="time" />
+            <field column="date_time" name="date_time" />
+            <field column="lat" name="lat" />
+            <field column="lon" name="lon" />
+            <field column="depth" name="depth" />
+            <field column="measurement_value" name="measurement_value" />
+            <field column="measurement_standard_name" name="measurement_standard_name" />
+            <field column="measurement_standard_units" name="measurement_standard_units" />
+            <field column="instrument_name" name="instrument_name" />
+            <field column="platform_name" name="platform_name" />
+            <field column="geom" name="geom" />
+        </entity>
+    </document>
+</dataConfig>
