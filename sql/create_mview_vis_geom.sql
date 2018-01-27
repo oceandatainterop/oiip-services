@@ -5,23 +5,31 @@
 CREATE MATERIALIZED VIEW public.mview_vis_geom
 TABLESPACE pg_default
 AS
- SELECT DISTINCT ON (variable.submission_id, variable.tag_id, data_position.date_time) variable.submission_id,
-    variable.tag_id,
-    data_position.date_time AS position_date_time,
-    st_makepoint(data_position.lon, data_position.lat) AS geom
-   FROM ( SELECT x.variable_value,
-            y.variable_name,
-            x.date_time,
-            x.submission_id,
-            x.tag_id,
-            y.variable_units,
-            row_number() OVER () AS row_number
-           FROM data_time_series x,
-            observation_types y
-          WHERE x.variable_id = y.variable_id AND x.variable_id <> 61 AND x.variable_id <> 58) variable,
-    data_position
-  WHERE variable.submission_id = data_position.submission_id AND variable.date_time >= data_position.date_time
-  ORDER BY variable.submission_id, variable.tag_id, data_position.date_time, (variable.date_time - data_position.date_time)
+ SELECT DISTINCT ON (vis_data.submission_id, vis_data.tag_id, vis_data.position_date_time) vis_data.submission_id,
+    vis_data.tag_id,
+    vis_data.position_date_time,
+    st_makepoint(vis_data.lon, vis_data.lat) AS geom
+   FROM ( SELECT mview_vis_data.submission_id,
+            mview_vis_data.tag_id,
+            mview_vis_data.position_date_time,
+            mview_vis_data.lon,
+            mview_vis_data.lat
+           FROM mview_vis_data
+        UNION
+         SELECT mview_vis_data_histogram.submission_id,
+            mview_vis_data_histogram.tag_id,
+            mview_vis_data_histogram.position_date_time,
+            mview_vis_data_histogram.lon,
+            mview_vis_data_histogram.lat
+           FROM mview_vis_data_histogram
+        UNION
+         SELECT mview_vis_data_profile.submission_id,
+            mview_vis_data_profile.tag_id,
+            mview_vis_data_profile.position_date_time,
+            mview_vis_data_profile.lon,
+            mview_vis_data_profile.lat
+           FROM mview_vis_data_profile) vis_data
+  ORDER BY vis_data.submission_id, vis_data.tag_id, vis_data.position_date_time
 WITH DATA;
 
 ALTER TABLE public.mview_vis_geom
