@@ -444,9 +444,7 @@
   <field name="max_value" type="double" indexed="true" stored="true"/>
   <field name="measurement_date_time" type="date" indexed="true" stored="true"/>
   <field name="measurement_name" type="string" indexed="true" stored="true"/>
-  <field name="measurement_standard_name" type="string" indexed="true" stored="true"/>
-  <field name="measurement_standard_units" type="string" indexed="true" stored="true"/>
-  <field name="measurement_units" type="double" indexed="true" stored="true"/>
+  <field name="measurement_units" type="string" indexed="true" stored="true"/>
   <field name="measurement_value" type="double" indexed="true" stored="true"/>
   <field name="min_value" type="double" indexed="true" stored="true"/>
   <field name="name" type="text_general" indexed="true" stored="true"/>
