@@ -28,19 +28,17 @@
     	password="" />
     <document name="oiip">
         <entity name="mview_vis_data" pk="id" dataSource="tagbase"
-            query="SELECT 'tag_'||row_number as id, row_number, submission_id, tag_id, variable_value, variable_name, variable_units, depth, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
-            deltaImportQuery="SELECT 'tag_'||row_number as id, row_number, submission_id, tag_id, variable_value, variable_name, variable_units, depth, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where 'tag_'||row_number = '${dih.delta.id}';"
-            deltaQuery="SELECT 'tag_'||row_number as id, row_number, submission_id, tag_id, variable_value, variable_name, variable_units, depth, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'tag_'||row_number as id, row_number, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
+            deltaImportQuery="SELECT 'tag_'||row_number as id, row_number, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where 'tag_'||row_number = '${dih.delta.id}';"
+            deltaQuery="SELECT 'tag_'||row_number as id, row_number, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="row_number" name="row_number" />
-            <field column="submission_id" name="submission_id" />
-            <field column="tag_id" name="tag_id" />
-            <field column="variable_value" name="variable_value" />
-            <field column="variable_name" name="variable_name" />
-            <field column="variable_units" name="variable_units" />
+            <field column="source_id" name="source_id" />
+            <field column="measurement_value" name="measurement_value" />
+            <field column="measurement_name" name="measurement_name" />
+            <field column="measurement_units" name="measurement_units" />
             <field column="depth" name="depth" />
-            <field column="match_up_time_difference" name="match_up_time_difference" />
-            <field column="data_date_time" name="data_date_time" />
+            <field column="measurement_date_time" name="measurement_date_time" />
             <field column="position_date_time" name="position_date_time" />
             <field column="lat" name="lat" />
             <field column="lon" name="lon" />
@@ -49,20 +47,17 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_data_histogram" pk="id" dataSource="tagbase"
-            query="SELECT 'his_'||row_number as id, row_number, submission_id, tag_id, bin_id, min_value, max_value, units, type, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram"
-            deltaImportQuery="SELECT 'his_'||row_number as id, row_number, submission_id, tag_id, bin_id, min_value, max_value, units, type, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where 'tag_'||row_number = '${dih.delta.id}';"
-            deltaQuery="SELECT 'his_'||row_number as id, row_number, submission_id, tag_id, bin_id, min_value, max_value, units, type, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'his_'||row_number as id, row_number, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram;"
+            deltaImportQuery="SELECT 'his_'||row_number as id, row_number, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where 'tag_'||row_number = '${dih.delta.id}';"
+            deltaQuery="SELECT 'his_'||row_number as id, row_number, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="row_number" name="row_number" />
-            <field column="submission_id" name="submission_id" />
-            <field column="tag_id" name="tag_id" />
-            <field column="bin_id" name="bin_id" />
-            <field column="min_value" name="min_value" />
-            <field column="max_value" name="max_value" />
-            <field column="units" name="units" />
-            <field column="type" name="type" />
-            <field column="match_up_time_difference" name="match_up_time_difference" />
-            <field column="data_date_time" name="data_date_time" />
+            <field column="source_id" name="source_id" />
+            <field column="bin_class" name="bin_class" />
+            <field column="measurement_value" name="measurement_value" />
+            <field column="measurement_units" name="measurement_units" />
+            <field column="measurement_name" name="measurement_name" />
+            <field column="measurement_date_time" name="measurement_date_time" />
             <field column="position_date_time" name="position_date_time" />
             <field column="lat" name="lat" />
             <field column="lon" name="lon" />
@@ -71,21 +66,19 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_data_profile" pk="id" dataSource="tagbase"
-            query="SELECT 'pro_'||row_number as id, row_number, submission_id, tag_id, bin_class, depth, min_value, max_value, units, type, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile"
-            deltaImportQuery="SELECT 'pro_'||row_number as id, row_number, submission_id, tag_id, bin_class, depth, min_value, max_value, units, type, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where 'tag_'||row_number = '${dih.delta.id}';"
-            deltaQuery="SELECT 'pro_'||row_number as id, row_number, submission_id, tag_id, bin_class, depth, min_value, max_value, units, type, extract('epoch' from match_up_time_difference) as match_up_time_difference, data_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'pro_'||row_number as id, row_number, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile;"
+            deltaImportQuery="SELECT 'pro_'||row_number as id, row_number, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where 'tag_'||row_number = '${dih.delta.id}';"
+            deltaQuery="SELECT 'pro_'||row_number as id, row_number, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="row_number" name="row_number" />
-            <field column="submission_id" name="submission_id" />
-            <field column="tag_id" name="tag_id" />
+            <field column="source_id" name="source_id" />
             <field column="bin_class" name="bin_class" />
             <field column="depth" name="depth" />
-            <field column="min_value" name="min_value" />
-            <field column="max_value" name="max_value" />
-            <field column="units" name="units" />
-            <field column="type" name="type" />
-            <field column="match_up_time_difference" name="match_up_time_difference" />
-            <field column="data_date_time" name="data_date_time" />
+            <field column="measurement_value_min" name="measurement_value_min" />
+            <field column="measurement_value_max" name="measurement_value_max" />
+            <field column="measurement_units" name="measurement_units" />
+            <field column="measurement_name" name="measurement_name" />
+            <field column="measurement_date_time" name="measurement_date_time" />
             <field column="position_date_time" name="position_date_time" />
             <field column="lat" name="lat" />
             <field column="lon" name="lon" />
