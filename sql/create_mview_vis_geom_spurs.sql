@@ -17,4 +17,4 @@ AS
 WITH DATA;
 
 ALTER TABLE public.mview_vis_geom
-    OWNER TO tagbase;
+    OWNER TO spurs;
