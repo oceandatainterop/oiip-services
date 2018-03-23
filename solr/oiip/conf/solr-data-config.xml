@@ -28,11 +28,12 @@
     	password="" />
     <document name="oiip">
         <entity name="mview_vis_data" pk="id" dataSource="tagbase"
-            query="SELECT 'tag_'||row_number as id, row_number, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
-            deltaImportQuery="SELECT 'tag_'||row_number as id, row_number, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where 'tag_'||row_number = '${dih.delta.id}';"
-            deltaQuery="SELECT 'tag_'||row_number as id, row_number, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'tag_'||row_number as id, 'tagbase' as project, 'data' as datatype, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
+            deltaImportQuery="SELECT 'tag_'||row_number as id, 'tagbase' as project, 'data' as datatype, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where 'tag_'||row_number = '${dih.delta.id}';"
+            deltaQuery="SELECT 'tag_'||row_number as id, 'tagbase' as project, 'data' as datatype, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
-            <field column="row_number" name="row_number" />
+            <field column="project" name="project" />
+            <field column="datatype" name="datatype" />
             <field column="source_id" name="source_id" />
             <field column="measurement_value" name="measurement_value" />
             <field column="measurement_name" name="measurement_name" />
@@ -47,11 +48,12 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_data_histogram" pk="id" dataSource="tagbase"
-            query="SELECT 'his_'||row_number as id, row_number, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram;"
-            deltaImportQuery="SELECT 'his_'||row_number as id, row_number, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where 'tag_'||row_number = '${dih.delta.id}';"
-            deltaQuery="SELECT 'his_'||row_number as id, row_number, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'his_'||row_number as id, 'tagbase' as project, 'histogram' as datatype, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram;"
+            deltaImportQuery="SELECT 'his_'||row_number as id, 'tagbase' as project, 'histogram' as datatype, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where 'tag_'||row_number = '${dih.delta.id}';"
+            deltaQuery="SELECT 'his_'||row_number as id, 'tagbase' as project, 'histogram' as datatype, source_id, bin_class, measurement_value, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_histogram where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
-            <field column="row_number" name="row_number" />
+            <field column="project" name="project" />
+            <field column="datatype" name="datatype" />
             <field column="source_id" name="source_id" />
             <field column="bin_class" name="bin_class" />
             <field column="measurement_value" name="measurement_value" />
@@ -66,11 +68,12 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_data_profile" pk="id" dataSource="tagbase"
-            query="SELECT 'pro_'||row_number as id, row_number, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile;"
-            deltaImportQuery="SELECT 'pro_'||row_number as id, row_number, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where 'tag_'||row_number = '${dih.delta.id}';"
-            deltaQuery="SELECT 'pro_'||row_number as id, row_number, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'pro_'||row_number as id, 'tagbase' as project, 'profile' as datatype, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile;"
+            deltaImportQuery="SELECT 'pro_'||row_number as id, 'tagbase' as project, 'profile' as datatype, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where 'tag_'||row_number = '${dih.delta.id}';"
+            deltaQuery="SELECT 'pro_'||row_number as id, 'tagbase' as project, 'profile' as datatype, source_id, bin_class, depth, measurement_value_min, measurement_value_max, measurement_units, measurement_name, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data_profile where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
-            <field column="row_number" name="row_number" />
+            <field column="project" name="project" />
+            <field column="datatype" name="datatype" />
             <field column="source_id" name="source_id" />
             <field column="bin_class" name="bin_class" />
             <field column="depth" name="depth" />
@@ -87,11 +90,13 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_data" pk="id" dataSource="spurs"
-            query="SELECT 'spurs_vis_'||row_number() OVER () as id, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
-            deltaImportQuery="SELECT 'spurs_vis_'||row_number() OVER () as id, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where 'spurs_vis_'||row_number() OVER () = '${dih.delta.id}';"
-            deltaQuery="SELECT 'spurs_vis_'||row_number() OVER () as id, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'spurs_vis_'||row_number() OVER () as id, 'spurs' as project, 'data' as datatype, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
+            deltaImportQuery="SELECT 'spurs_vis_'||row_number() OVER () as id, 'spurs' as project, 'data' as datatype, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where 'spurs_vis_'||row_number() OVER () = '${dih.delta.id}';"
+            deltaQuery="SELECT 'spurs_vis_'||row_number() OVER () as id, 'spurs' as project, 'data' as datatype, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="source_id" name="source_id" />
+            <field column="project" name="project" />
+            <field column="datatype" name="datatype" />
             <field column="measurement_value" name="measurement_value" />
             <field column="measurement_name" name="measurement_name" />
             <field column="measurement_units" name="measurement_units" />
@@ -105,11 +110,13 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_metadata" pk="id" dataSource="spurs"
-            query="SELECT 'spurs_meta_'||row_number() OVER () as id, source_id, attribute_type, variable, attribute_name, attribute_value from mview_vis_metadata;"
-            deltaImportQuery="SELECT 'spurs_meta_'||row_number() OVER () as id, source_id, attribute_type, variable, attribute_name, attribute_value from mview_vis_metadata where 'spurs_meta_'||row_number() OVER () = '${dih.delta.id}';"
-            deltaQuery="SELECT 'spurs_meta_'||row_number() OVER () as id, source_id, attribute_type, variable, attribute_name, attribute_value from mview_vis_metadata where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'spurs_meta_'||row_number() OVER () as id, 'spurs' as project, 'metadata' as datatype, source_id, attribute_type, variable, attribute_name, attribute_value from mview_vis_metadata;"
+            deltaImportQuery="SELECT 'spurs_meta_'||row_number() OVER () as id, 'spurs' as project, 'metadata' as datatype, source_id, attribute_type, variable, attribute_name, attribute_value from mview_vis_metadata where 'spurs_meta_'||row_number() OVER () = '${dih.delta.id}';"
+            deltaQuery="SELECT 'spurs_meta_'||row_number() OVER () as id, 'spurs' as project, 'metadata' as datatype, source_id, attribute_type, variable, attribute_name, attribute_value from mview_vis_metadata where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="source_id" name="source_id" />
+            <field column="project" name="project" />
+            <field column="datatype" name="datatype" />
             <field column="attribute_type" name="attribute_type" />
             <field column="variable" name="variable" />
             <field column="attribute_name" name="attribute_name" />

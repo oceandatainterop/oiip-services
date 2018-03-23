@@ -420,6 +420,7 @@
   <field name="content" type="text_general" multiValued="true" indexed="false" stored="true"/>
   <field name="content_type" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="data_date_time" type="date" indexed="true" stored="true"/>
+  <field name="datatype" type="string" indexed="true" stored="true"/>
   <field name="date_time" type="descendent_path" indexed="true" stored="true"/>
   <field name="depth" type="double" indexed="true" stored="true"/>
   <field name="description" type="text_general" indexed="true" stored="true"/>
@@ -454,6 +455,7 @@
   <field name="popularity" type="int" indexed="true" stored="true"/>
   <field name="position_date_time" type="date" indexed="true" stored="true"/>
   <field name="price" type="float" indexed="true" stored="true"/>
+  <field name="project" type="string" indexed="true" stored="true"/>
   <field name="resourcename" type="text_general" indexed="true" stored="true"/>
   <field name="row_number" type="long" indexed="true" stored="true"/>
   <field name="sku" type="text_en_splitting_tight" omitNorms="true" indexed="true" stored="true"/>
