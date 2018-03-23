@@ -411,6 +411,9 @@
   <fieldType name="tlong" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="8"/>
   <field name="_root_" type="string" indexed="true" stored="false"/>
   <field name="_version_" type="long" indexed="true" stored="true"/>
+  <field name="attribute_name" type="string" indexed="true" stored="true"/>
+  <field name="attribute_type" type="string" indexed="true" stored="true"/>
+  <field name="attribute_value" type="string" indexed="true" stored="true"/>
   <field name="author" type="text_general" indexed="true" stored="true"/>
   <field name="bin_class" type="int" indexed="true" stored="true"/>
   <field name="bin_id" type="long" indexed="true" stored="true"/>
@@ -471,6 +474,7 @@
   <field name="type" type="string" indexed="true" stored="true"/>
   <field name="units" type="string" indexed="true" stored="true"/>
   <field name="url" type="text_general" indexed="true" stored="true"/>
+  <field name="variable" type="string" indexed="true" stored="true"/>
   <field name="variable_name" type="string" indexed="true" stored="true"/>
   <field name="variable_units" type="string" indexed="true" stored="true"/>
   <field name="variable_value" type="double" indexed="true" stored="true"/>
