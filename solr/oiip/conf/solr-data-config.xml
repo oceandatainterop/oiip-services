@@ -104,13 +104,14 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_titles" pk="id" dataSource="tagbase"
-            query="SELECT 'tagbase_titles_'||row_number() OVER () as id, 'tagbase' as project, 'title' as datatype, source_id, attribute_name, attribute_value from mview_vis_titles;"
-            deltaImportQuery="SELECT 'tagbase_titles_'||row_number() OVER () as id, 'tagbase' as project, 'title' as datatype, source_id, attribute_name, attribute_value from mview_vis_titles; where 'tagbase_titles_'||row_number() OVER () = '${dih.delta.id}';"
-            deltaQuery="SELECT 'tagbase_titles_'||row_number() OVER () as id, 'tagbase' as project, 'title' as datatype, source_id, attribute_name, attribute_value from mview_vis_titles; where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'tagbase_titles_'||row_number() OVER () as id, 'tagbase' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, attribute_value from mview_vis_titles;"
+            deltaImportQuery="SELECT 'tagbase_titles_'||row_number() OVER () as id, 'tagbase' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, attribute_value from mview_vis_titles; where 'tagbase_titles_'||row_number() OVER () = '${dih.delta.id}';"
+            deltaQuery="SELECT 'tagbase_titles_'||row_number() OVER () as id, 'tagbase' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, attribute_value from mview_vis_titles; where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="project" name="project" />
             <field column="datatype" name="datatype" />
             <field column="source_id" name="source_id" />
+            <field column="title" name="title" />
             <field column="attribute_name" name="attribute_name" />
             <field column="attribute_value" name="attribute_value" />
         </entity>
@@ -148,13 +149,14 @@
             <field column="attribute_value" name="attribute_value" />
         </entity>
         <entity name="mview_vis_titles" pk="id" dataSource="tagbase"
-            query="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, attribute_name, attribute_value from mview_vis_titles;"
-            deltaImportQuery="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, attribute_name, attribute_value from mview_vis_titles; where 'spurs_titles_'||row_number() OVER () = '${dih.delta.id}';"
-            deltaQuery="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, attribute_name, attribute_value from mview_vis_titles; where last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, attribute_value from mview_vis_titles;"
+            deltaImportQuery="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, attribute_value from mview_vis_titles; where 'spurs_titles_'||row_number() OVER () = '${dih.delta.id}';"
+            deltaQuery="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, attribute_value from mview_vis_titles; where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="project" name="project" />
             <field column="datatype" name="datatype" />
             <field column="source_id" name="source_id" />
+            <field column="title" name="title" />
             <field column="attribute_name" name="attribute_name" />
             <field column="attribute_value" name="attribute_value" />
         </entity>
