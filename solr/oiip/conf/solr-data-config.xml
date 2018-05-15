@@ -148,7 +148,7 @@
             <field column="attribute_name" name="attribute_name" />
             <field column="attribute_value" name="attribute_value" />
         </entity>
-        <entity name="mview_vis_titles" pk="id" dataSource="tagbase"
+        <entity name="mview_vis_titles" pk="id" dataSource="spurs"
             query="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, trim(attribute_value) as attribute_value from mview_vis_titles;"
             deltaImportQuery="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, trim(attribute_value) as attribute_value from mview_vis_titles; where 'spurs_titles_'||row_number() OVER () = '${dih.delta.id}';"
             deltaQuery="SELECT 'spurs_titles_'||row_number() OVER () as id, 'spurs' as project, 'title' as datatype, source_id, title, trim(attribute_name) as attribute_name, trim(attribute_value) as attribute_value from mview_vis_titles; where last_modified &gt; '${dih.last_index_time}';">
