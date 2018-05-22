@@ -104,9 +104,9 @@
             <field column="geom" name="geom" />
         </entity>
         <entity name="mview_vis_titles" pk="id" dataSource="tagbase" transformer="RegexTransformer"
-            query="SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
-            deltaImportQuery="SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND 'tagbase_track_'||row_number() OVER () = '${dih.delta.id}';"
-            deltaQuery="SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, 'tagbase' as project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
+            deltaImportQuery="SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, 'tagbase' as project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND 'tagbase_track_'||row_number() OVER () = '${dih.delta.id}';"
+            deltaQuery="SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, 'tagbase' as project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
@@ -122,6 +122,17 @@
             <field column="description" name="description" />
             <field column="source_id" name="source_id" />
             <field column="variables" splitBy="\|" sourceColName="variables"/>
+        </entity>
+        <entity name="mview_vis_pointdata" pk="id" dataSource="tagbase" transformer="RegexTransformer"
+            query="SELECT concat_ws('-','tagbase_pointdata',source_id,extract(epoch from measurement_date_time)) as id, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr, array_to_string(array_agg(depth),'|') as depth_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon;">
+            <field column="id" name="id" />
+            <field column="epoch_time" name="epoch_time" />
+            <field column="measurement_value_arr" splitBy="\|" sourceColName="measurement_value_arr" />
+            <field column="measurement_name_arr" splitBy="\|" sourceColName="measurement_name_arr" />
+            <field column="measurement_units_arr" splitBy="\|" sourceColName="measurement_units_arr" />
+            <field column="depth_arr" splitBy="\|" sourceColName="depth_arr" />
+            <field column="lat" name="lat" />
+            <field column="lon" name="lon" />
         </entity>
         <entity name="mview_vis_data" pk="id" dataSource="spurs"
             query="SELECT 'spurs_data_'||row_number() OVER () as id, 'spurs' as project, 'data' as datatype, source_id, measurement_value, measurement_name, measurement_units, depth, measurement_date_time, position_date_time, lat, lon, lat_err, lon_err, lat::text || ',' || lon::text AS geom from mview_vis_data;"
@@ -157,9 +168,9 @@
             <field column="attribute_value" name="attribute_value" />
         </entity>
         <entity name="mview_vis_titles" pk="id" dataSource="spurs" transformer="RegexTransformer"
-            query="SELECT 'spurs_track_'||row_number() OVER () as id, concat_ws('|','spurs',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
-            deltaImportQuery="SELECT 'spurs_track_'||row_number() OVER () as id, concat_ws('|','spurs',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND 'spurs_track_'||row_number() OVER () = '${dih.delta.id}';"
-            deltaQuery="SELECT 'spurs_track_'||row_number() OVER () as id, concat_ws('|','spurs',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND last_modified &gt; '${dih.last_index_time}';">
+            query="SELECT 'spurs_track_'||row_number() OVER () as id, concat_ws('|','spurs',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, 'spurs' as project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
+            deltaImportQuery="SELECT 'spurs_track_'||row_number() OVER () as id, concat_ws('|','spurs',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, 'spurs' as project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND 'spurs_track_'||row_number() OVER () = '${dih.delta.id}';"
+            deltaQuery="SELECT 'spurs_track_'||row_number() OVER () as id, concat_ws('|','spurs',mview_vis_titles.source_id,platform) as track_id, 'track' as datatype, platform, 'spurs' as project, instrument, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',meastype1,meastype2,meastype3,meastype4,meastype5,meastype6,meastype7,meastype8,meastype9,meastype10) as variables, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id AND last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
@@ -175,6 +186,17 @@
             <field column="description" name="description" />
             <field column="source_id" name="source_id" />
             <field column="variables" splitBy="\|" sourceColName="variables"/>
+        </entity>
+         <entity name="mview_vis_pointdata" pk="id" dataSource="spurs" transformer="RegexTransformer"
+            query="SELECT concat_ws('-','spurs_pointdata',source_id,extract(epoch from measurement_date_time)) as id, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr, array_to_string(array_agg(depth),'|') as depth_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon;">
+            <field column="id" name="id" />
+            <field column="epoch_time" name="epoch_time" />
+            <field column="measurement_value_arr" splitBy="\|" sourceColName="measurement_value_arr" />
+            <field column="measurement_name_arr" splitBy="\|" sourceColName="measurement_name_arr" />
+            <field column="measurement_units_arr" splitBy="\|" sourceColName="measurement_units_arr" />
+            <field column="depth_arr" splitBy="\|" sourceColName="depth_arr" />
+            <field column="lat" name="lat" />
+            <field column="lon" name="lon" />
         </entity>
     </document>
 </dataConfig>
