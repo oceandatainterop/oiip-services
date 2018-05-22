@@ -124,8 +124,10 @@
             <field column="variables" splitBy="\|" sourceColName="variables"/>
         </entity>
         <entity name="mview_vis_pointdata" pk="id" dataSource="tagbase" transformer="RegexTransformer"
-            query="SELECT concat_ws('-','tagbase_pointdata',source_id,extract(epoch from measurement_date_time)) as id, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr, array_to_string(array_agg(depth),'|') as depth_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon;">
+            query="SELECT concat_ws('-','tagbase_pointdata',source_id,extract(epoch from measurement_date_time)) as id, 'tagbase' as project, 'pointdata' as datatype, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr, array_to_string(array_agg(depth),'|') as depth_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon;">
             <field column="id" name="id" />
+            <field column="project" name="project" />
+            <field column="datatype" name="datatype" />
             <field column="epoch_time" name="epoch_time" />
             <field column="measurement_value_arr" splitBy="\|" sourceColName="measurement_value_arr" />
             <field column="measurement_name_arr" splitBy="\|" sourceColName="measurement_name_arr" />
@@ -188,8 +190,10 @@
             <field column="variables" splitBy="\|" sourceColName="variables"/>
         </entity>
          <entity name="mview_vis_pointdata" pk="id" dataSource="spurs" transformer="RegexTransformer"
-            query="SELECT concat_ws('-','spurs_pointdata',source_id,extract(epoch from measurement_date_time)) as id, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr, array_to_string(array_agg(depth),'|') as depth_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon;">
+            query="SELECT concat_ws('-','spurs_pointdata',source_id,extract(epoch from measurement_date_time)) as id, 'spurs' as project, 'pointdata' as datatype, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr, array_to_string(array_agg(depth),'|') as depth_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon;">
             <field column="id" name="id" />
+            <field column="project" name="project" />
+            <field column="datatype" name="datatype" />
             <field column="epoch_time" name="epoch_time" />
             <field column="measurement_value_arr" splitBy="\|" sourceColName="measurement_value_arr" />
             <field column="measurement_name_arr" splitBy="\|" sourceColName="measurement_name_arr" />
