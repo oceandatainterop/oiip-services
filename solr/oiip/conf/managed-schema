@@ -426,7 +426,10 @@
   <field name="datatype" type="string" indexed="true" stored="true"/>
   <field name="date_time" type="descendent_path" indexed="true" stored="true"/>
   <field name="depth" type="double" indexed="true" stored="true"/>
+  <field name="depth_arr" type="double" multiValued="true" indexed="true" stored="true"/>
   <field name="description" type="text_general" indexed="true" stored="true"/>
+  <field name="end_date" type="int" indexed="true" stored="true"/>
+  <field name="epoch_time" type="int" indexed="true" stored="true"/>
   <field name="features" type="text_general" multiValued="true" indexed="true" stored="true"/>
   <field name="geom" type="location" indexed="true" stored="true"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
@@ -434,26 +437,36 @@
   <field name="id_platform" type="long" indexed="true" stored="true"/>
   <field name="inStock" type="boolean" indexed="true" stored="true"/>
   <field name="includes" type="text_general" termPositions="true" termVectors="true" indexed="true" termOffsets="true" stored="true"/>
+  <field name="instrument" type="string" indexed="true" stored="true"/>
   <field name="instrument_name" type="string" indexed="true" stored="true"/>
   <field name="keywords" type="text_general" indexed="true" stored="true"/>
   <field name="last_modified" type="date" indexed="true" stored="true"/>
   <field name="lat" type="double" indexed="true" stored="true"/>
   <field name="lat_err" type="double" indexed="true" stored="true"/>
+  <field name="lat_max" type="double" indexed="true" stored="true"/>
+  <field name="lat_min" type="double" indexed="true" stored="true"/>
   <field name="links" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="lon" type="double" indexed="true" stored="true"/>
-  <field name="lon_err" type="date" indexed="true" stored="true"/>
+  <field name="lon_err" type="double" indexed="true" stored="true"/>
+  <field name="lon_max" type="double" indexed="true" stored="true"/>
+  <field name="lon_min" type="double" indexed="true" stored="true"/>
   <field name="manu" type="text_general" omitNorms="true" indexed="true" stored="true"/>
   <field name="manu_exact" type="string" indexed="true" stored="false"/>
   <field name="match_up_time_difference" type="long" indexed="true" stored="true"/>
   <field name="max_value" type="double" indexed="true" stored="true"/>
   <field name="measurement_date_time" type="date" indexed="true" stored="true"/>
   <field name="measurement_name" type="string" indexed="true" stored="true"/>
+  <field name="measurement_name_arr" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="measurement_units" type="string" indexed="true" stored="true"/>
+  <field name="measurement_units_arr" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="measurement_value" type="double" indexed="true" stored="true"/>
+  <field name="measurement_value_arr" type="double" multiValued="true" indexed="true" stored="true"/>
   <field name="min_value" type="double" indexed="true" stored="true"/>
+  <field name="mission" type="string" indexed="true" stored="true"/>
   <field name="name" type="text_general" indexed="true" stored="true"/>
   <field name="nc_id" type="lowercase" indexed="true" stored="true"/>
   <field name="payloads" type="payloads" indexed="true" stored="true"/>
+  <field name="platform" type="string" indexed="true" stored="true"/>
   <field name="platform_name" type="string" indexed="true" stored="true"/>
   <field name="popularity" type="int" indexed="true" stored="true"/>
   <field name="position_date_time" type="date" indexed="true" stored="true"/>
@@ -463,6 +476,7 @@
   <field name="row_number" type="long" indexed="true" stored="true"/>
   <field name="sku" type="text_en_splitting_tight" omitNorms="true" indexed="true" stored="true"/>
   <field name="source_id" type="long" indexed="true" stored="true"/>
+  <field name="start_date" type="int" indexed="true" stored="true"/>
   <field name="store" type="location" indexed="true" stored="true"/>
   <field name="subject" type="text_general" indexed="true" stored="true"/>
   <field name="submission_id" type="long" indexed="true" stored="true"/>
@@ -471,6 +485,7 @@
   <field name="text_rev" type="text_general_rev" multiValued="true" indexed="true" stored="false"/>
   <field name="time" type="long" indexed="true" stored="true"/>
   <field name="title" type="text_general" multiValued="true" indexed="true" stored="true"/>
+  <field name="track_id" type="string" indexed="true" stored="true"/>
   <field name="type" type="string" indexed="true" stored="true"/>
   <field name="units" type="string" indexed="true" stored="true"/>
   <field name="url" type="text_general" indexed="true" stored="true"/>
@@ -478,6 +493,7 @@
   <field name="variable_name" type="string" indexed="true" stored="true"/>
   <field name="variable_units" type="string" indexed="true" stored="true"/>
   <field name="variable_value" type="double" indexed="true" stored="true"/>
+  <field name="variables" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="weight" type="float" indexed="true" stored="true"/>
   <dynamicField name="*_coordinate" type="tdouble" indexed="true" stored="false"/>
   <dynamicField name="ignored_*" type="ignored" multiValued="true"/>
