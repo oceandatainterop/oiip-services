@@ -494,6 +494,7 @@
   <field name="variable_units" type="string" indexed="true" stored="true"/>
   <field name="variable_value" type="double" indexed="true" stored="true"/>
   <field name="variables" type="string" multiValued="true" indexed="true" stored="true"/>
+  <field name="variables_units" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="weight" type="float" indexed="true" stored="true"/>
   <dynamicField name="*_coordinate" type="tdouble" indexed="true" stored="false"/>
   <dynamicField name="ignored_*" type="ignored" multiValued="true"/>
