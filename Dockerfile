@@ -1,11 +1,17 @@
-FROM centos:7
+# Used for development only
 
-RUN yum install -y wget
+FROM centos:7
+RUN yum install -y wget unzip lsof && \
+	yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel && \
+	yum clean all
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0
+ENV GEOSERVER_HOME /home/oiip/geoserver/
 RUN mkdir /home/oiip
+RUN mkdir /home/oiip/oiip-services
 RUN mkdir -p /var/www
 
 # Install and start GeoServer
-WORKDIR /home/oiip
+WORKDIR /home/oiip/
 RUN wget "https://downloads.sourceforge.net/project/geoserver/GeoServer/2.13.2/geoserver-2.13.2-bin.zip"
 RUN wget "https://downloads.sourceforge.net/project/geoserver/GeoServer/2.13.2/extensions/geoserver-2.13.2-vectortiles-plugin.zip"
 RUN unzip geoserver-2.13.2-bin.zip
@@ -14,21 +20,19 @@ RUN unzip geoserver-2.13.2-vectortiles-plugin.zip
 RUN mv *.jar geoserver/webapps/geoserver/WEB-INF/lib/
 
 # Install and start Solr
-WORKDIR /home/oiip
+WORKDIR /home/oiip/
 RUN wget "http://archive.apache.org/dist/lucene/solr/6.4.2/solr-6.4.2.tgz"
 RUN tar -xvzf solr-6.4.2.tgz
 RUN ln -s solr-6.4.2 solr
 
 # Clone oiip-services repo and copy files
-WORKDIR /home/oiip
-RUN git clone https://git.earthdata.nasa.gov/scm/oiip/oiip-services.git
-WORKDIR /home/oiip/oiip-services
+COPY ./ /home/oiip/oiip-services/
+WORKDIR /home/oiip/oiip-services/
 RUN cp -R geoserver/data_dir/data/shapefiles /home/oiip/geoserver/data_dir/data/
 RUN cp -R geoserver/data_dir/workspaces/oiip /home/oiip/geoserver/data_dir/workspaces/
 RUN cp -R solr/oiip /home/oiip/solr/server/solr/
 
 # Start services
-WORKDIR /home/oiip/geoserver/bin
-RUN nohup ./startup.sh &
-WORKDIR /home/oiip/solr/bin
-RUN nohup ./solr start -m 8g &
+WORKDIR /home/oiip/
+EXPOSE 8080 8983
+CMD /home/oiip/solr/bin/solr start -m 8g -force && /home/oiip/geoserver/bin/startup.sh
