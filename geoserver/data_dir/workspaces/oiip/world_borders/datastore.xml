@@ -1,0 +1,22 @@
+<dataStore>
+  <id>DataStoreInfoImpl--4b72f78:161357ee33f:6e66</id>
+  <name>world_borders</name>
+  <type>Shapefile</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl-7d609836:15fc2522f30:-7fff</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="charset">ISO-8859-1</entry>
+    <entry key="filetype">shapefile</entry>
+    <entry key="create spatial index">true</entry>
+    <entry key="memory mapped buffer">false</entry>
+    <entry key="timezone">UTC</entry>
+    <entry key="enable spatial index">true</entry>
+    <entry key="namespace">oiip.jpl.nasa.gov</entry>
+    <entry key="cache and reuse memory maps">true</entry>
+    <entry key="url">file:data/shapefiles/TM_WORLD_BORDERS-0.3.shp</entry>
+    <entry key="fstype">shape</entry>
+  </connectionParameters>
+  <__default>false</__default>
+</dataStore>

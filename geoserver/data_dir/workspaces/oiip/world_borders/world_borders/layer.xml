@@ -1,0 +1,15 @@
+<layer>
+  <name>world_borders</name>
+  <id>LayerInfoImpl--4b72f78:161357ee33f:6e68</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--4b72f78:161357ee33f:6e67</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

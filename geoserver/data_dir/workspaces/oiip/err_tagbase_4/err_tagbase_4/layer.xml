@@ -1,0 +1,15 @@
+<layer>
+  <name>err_tagbase_4</name>
+  <id>LayerInfoImpl--4b72f78:16360bf8f60:166c</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe3</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--4b72f78:16360bf8f60:166b</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

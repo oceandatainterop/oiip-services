@@ -1,0 +1,15 @@
+<layer>
+  <name>eez</name>
+  <id>LayerInfoImpl-3f44487c:164fbcd8940:1571</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-65511228:165168eb1a2:-7ffe</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-3f44487c:164fbcd8940:1570</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

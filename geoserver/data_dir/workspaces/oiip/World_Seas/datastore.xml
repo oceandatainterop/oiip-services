@@ -1,0 +1,22 @@
+<dataStore>
+  <id>DataStoreInfoImpl-65511228:16569188a64:4276</id>
+  <name>World_Seas</name>
+  <type>Shapefile</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl-7d609836:15fc2522f30:-7fff</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="charset">ISO-8859-1</entry>
+    <entry key="filetype">shapefile</entry>
+    <entry key="create spatial index">true</entry>
+    <entry key="memory mapped buffer">true</entry>
+    <entry key="timezone">UTC</entry>
+    <entry key="enable spatial index">true</entry>
+    <entry key="namespace">oiip.jpl.nasa.gov</entry>
+    <entry key="cache and reuse memory maps">true</entry>
+    <entry key="url">file:data/shapefiles/World_Seas.shp</entry>
+    <entry key="fstype">shape</entry>
+  </connectionParameters>
+  <__default>false</__default>
+</dataStore>

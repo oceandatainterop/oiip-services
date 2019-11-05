@@ -1,0 +1,38 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-65511228:168161c9ba8:-6508</id>
+  <name>mview_vis_geom_saildrone</name>
+  <nativeName>mview_vis_geom</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl-7d609836:15fc2522f30:-7ffe</id>
+  </namespace>
+  <title>mview_vis_geom_saildrone</title>
+  <keywords>
+    <string>features</string>
+    <string>mview_vis_geom</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>-180.0</minx>
+    <maxx>180.0</maxx>
+    <miny>-90.0</miny>
+    <maxy>90.0</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>-180.0</minx>
+    <maxx>180.0</maxx>
+    <miny>-90.0</miny>
+    <maxy>90.0</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-65511228:168161c9ba8:-6509</id>
+  </store>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

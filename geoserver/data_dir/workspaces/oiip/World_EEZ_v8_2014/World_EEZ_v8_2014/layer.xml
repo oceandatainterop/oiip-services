@@ -1,0 +1,15 @@
+<layer>
+  <name>World_EEZ_v8_2014</name>
+  <id>LayerInfoImpl-65511228:1655e67b18f:-1b8c</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-65511228:1655e67b18f:-1b8d</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

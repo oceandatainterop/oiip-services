@@ -1,0 +1,23 @@
+<dataStore>
+  <id>DataStoreInfoImpl--4b72f78:16360bf8f60:1668</id>
+  <name>err_tagbase_4</name>
+  <description>Error Ellipse for Tagbase 4</description>
+  <type>Shapefile</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl-7d609836:15fc2522f30:-7fff</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="charset">ISO-8859-1</entry>
+    <entry key="filetype">shapefile</entry>
+    <entry key="create spatial index">true</entry>
+    <entry key="memory mapped buffer">false</entry>
+    <entry key="timezone">UTC</entry>
+    <entry key="enable spatial index">true</entry>
+    <entry key="namespace">oiip.jpl.nasa.gov</entry>
+    <entry key="cache and reuse memory maps">true</entry>
+    <entry key="url">file:data/shapefiles/source_id_4_err.shp</entry>
+    <entry key="fstype">shape</entry>
+  </connectionParameters>
+  <__default>false</__default>
+</dataStore>

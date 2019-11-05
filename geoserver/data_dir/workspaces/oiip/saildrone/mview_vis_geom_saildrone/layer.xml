@@ -1,0 +1,20 @@
+<layer>
+  <name>mview_vis_geom_saildrone</name>
+  <id>LayerInfoImpl-65511228:168161c9ba8:-6507</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-37b18cc6:14d5d036d48:-8000</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--570ae188:124761b8d78:-7fdf</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-65511228:168161c9ba8:-6508</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

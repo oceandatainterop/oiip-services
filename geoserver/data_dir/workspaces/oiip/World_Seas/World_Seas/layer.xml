@@ -1,0 +1,15 @@
+<layer>
+  <name>World_Seas</name>
+  <id>LayerInfoImpl-65511228:16569188a64:4279</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-65511228:16569188a64:4278</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

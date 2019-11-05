@@ -1,0 +1,48 @@
+<layerGroup>
+  <id>LayerGroupInfoImpl--4b72f78:16360bf8f60:166d</id>
+  <name>err_test</name>
+  <mode>SINGLE</mode>
+  <title>Error Ellipse Test</title>
+  <workspace>
+    <id>WorkspaceInfoImpl-7d609836:15fc2522f30:-7fff</id>
+  </workspace>
+  <publishables>
+    <published type="layer">
+      <id>LayerInfoImpl--4b72f78:16370c0c198:-5443</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--4b72f78:161357ee33f:6e68</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--4b72f78:16370c0c198:-7b12</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--4b72f78:1602987dc6d:-19fc</id>
+    </published>
+  </publishables>
+  <styles>
+    <style>
+      <id>StyleInfoImpl--570ae188:124761b8d78:-7fdd</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl--4b72f78:16370c0c198:-7b10</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl--570ae188:124761b8d78:-7fdf</id>
+    </style>
+  </styles>
+  <bounds>
+    <minx>-180.0</minx>
+    <maxx>180.0</maxx>
+    <miny>-90.0</miny>
+    <maxy>90.0</maxy>
+    <crs>EPSG:4326</crs>
+  </bounds>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layerGroup>

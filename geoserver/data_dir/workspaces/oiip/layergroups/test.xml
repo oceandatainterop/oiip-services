@@ -1,0 +1,30 @@
+<layerGroup>
+  <id>LayerGroupInfoImpl--4b72f78:161357ee33f:6e69</id>
+  <name>test</name>
+  <mode>SINGLE</mode>
+  <title>test</title>
+  <workspace>
+    <id>WorkspaceInfoImpl-7d609836:15fc2522f30:-7fff</id>
+  </workspace>
+  <publishables>
+    <published type="layer">
+      <id>LayerInfoImpl--4b72f78:16135710c82:-54eb</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--4b72f78:161357ee33f:6e68</id>
+    </published>
+  </publishables>
+  <styles>
+    <style/>
+    <style>
+      <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+    </style>
+  </styles>
+  <bounds>
+    <minx>-180.0</minx>
+    <maxx>180.0</maxx>
+    <miny>-90.0</miny>
+    <maxy>90.0</maxy>
+    <crs>EPSG:4326</crs>
+  </bounds>
+</layerGroup>

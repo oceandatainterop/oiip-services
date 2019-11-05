@@ -1,0 +1,15 @@
+<layer>
+  <name>eez_boundaries</name>
+  <id>LayerInfoImpl-3f44487c:164fbcd8940:157c</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe3</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-3f44487c:164fbcd8940:157b</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

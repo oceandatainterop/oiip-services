@@ -1,0 +1,15 @@
+<layer>
+  <name>iho</name>
+  <id>LayerInfoImpl-3f44487c:164fbcd8940:1575</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-65511228:165168eb1a2:-7aac</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-3f44487c:164fbcd8940:1574</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>
