@@ -42,9 +42,21 @@ OIIP data is indexed into Solr for high perfomance data queries. It is used by t
 
 GeoServer provides GIS data services for OIIP. It is the primary map server for the OIIP Data Viewer.
 
-####PostGIS
+#### PostGIS
 
 OIIP data is stored in a PostGIS database. This repository does not contain configurations or data for PostGIS. Other databases supporting spatial data types should work as well.
+
+Included in this repository under [sql/](sql/) are the SQL CREATE scripts for generating the materialized views that are used by Solr and GeoServer.
+
+* mview\_vis\_data_histogram
+* mview\_vis\_data_profile
+* mview\_vis\_data_tabular
+* mview\_vis\_data
+* mview\_vis\_geom
+* mview\_vis\_titles
+* mview\_vis\_variables
+
+Note that each "project" should have its own database and set of views.
 
 ### Reference Client
 
