@@ -44,7 +44,7 @@ OIIP Services relies on the following components:
 * GeoServer - data service for mapping
 * PostGIS - data storage
 
-<img src="images/oiip_architecture.png" width="512">
+![OIIP Architecture](images/oiip_architecture.png)
 
 #### Solr
 
@@ -66,20 +66,27 @@ Each **entity** generally maps to a database query to one table, but *mview_vis_
 
 * mview\_vis\_data\_tabular: Contains the data from *mview_vis_data_tabular* in tabular form
 
-	SELECT 'tagbase_data_'||row_number() OVER () as id, 'tagbase' as project, 'data' as datatype, * FROM public.mview_vis_data_tabular;
-	
+```
+SELECT 'tagbase_data_'||row_number() OVER () as id, 'tagbase' as project, 'data' as datatype, * FROM public.mview_vis_data_tabular;
+```
+
 * mview\_vis\_pointdata: Contains the data from *mview_vis_data* with data measurements group into arrays
 
-	SELECT concat_ws('-','tagbase_pointdata',source_id,extract(epoch from measurement_date_time)) as id, 'tagbase' as project, 'pointdata' as datatype, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, depth, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon, depth;
+```
+SELECT concat_ws('-','tagbase_pointdata',source_id,extract(epoch from measurement_date_time)) as id, 'tagbase' as project, 'pointdata' as datatype, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, depth, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon, depth;
+```
 
 * mview\_vis\_metadata: Contains the metadata about variables and attributes from *mview_vis_metadata*
 
-	SELECT 'tagbase_metadata_'||row_number() OVER () as id, 'tagbase' as project, 'metadata' as datatype, source_id, attribute_type, variable, category, attribute_name, attribute_value from mview_vis_metadata;
+```
+SELECT 'tagbase_metadata_'||row_number() OVER () as id, 'tagbase' as project, 'metadata' as datatype, source_id, attribute_type, variable, category, attribute_name, attribute_value from mview_vis_metadata;
+```
 
 * mview\_vis\_titles: Contains the summary information of indvidual datasets from *mview_vis_titles* joined with its list of variables found in *mview_vis_variables*
 
-	SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,trim(platform)) as track_id, 'track' as datatype, trim(platform) as platform, 'tagbase' as project, trim(project) as instrument, trim(instrument) as mission, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',split_part(meastype1, ' (', 1),split_part(meastype2, ' (', 1),split_part(meastype3, ' (', 1),split_part(meastype4, ' (', 1),split_part(meastype5, ' (', 1),split_part(meastype6, ' (', 1),split_part(meastype7, ' (', 1),split_part(meastype8, ' (', 1),split_part(meastype9, ' (', 1),split_part(meastype10, ' (', 1)) as variables, concat_ws('|',substring(meastype1 from '\((.+)\)'),substring(meastype2 from '\((.+)\)'),substring(meastype3 from '\((.+)\)'),substring(meastype4 from '\((.+)\)'),substring(meastype5 from '\((.+)\)'),substring(meastype6 from '\((.+)\)'),substring(meastype7 from '\((.+)\)'),substring(meastype8 from '\((.+)\)'),substring(meastype9 from '\((.+)\)'),substring(meastype10 from '\((.+)\)')) as variables_units, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
-
+```
+SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,trim(platform)) as track_id, 'track' as datatype, trim(platform) as platform, 'tagbase' as project, trim(project) as instrument, trim(instrument) as mission, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',split_part(meastype1, ' (', 1),split_part(meastype2, ' (', 1),split_part(meastype3, ' (', 1),split_part(meastype4, ' (', 1),split_part(meastype5, ' (', 1),split_part(meastype6, ' (', 1),split_part(meastype7, ' (', 1),split_part(meastype8, ' (', 1),split_part(meastype9, ' (', 1),split_part(meastype10, ' (', 1)) as variables, concat_ws('|',substring(meastype1 from '\((.+)\)'),substring(meastype2 from '\((.+)\)'),substring(meastype3 from '\((.+)\)'),substring(meastype4 from '\((.+)\)'),substring(meastype5 from '\((.+)\)'),substring(meastype6 from '\((.+)\)'),substring(meastype7 from '\((.+)\)'),substring(meastype8 from '\((.+)\)'),substring(meastype9 from '\((.+)\)'),substring(meastype10 from '\((.+)\)')) as variables_units, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
+```
 
 **Data Import**
 
@@ -135,5 +142,5 @@ Note that each "project" should have its own database and set of views.
 
 Check out [OIIP Data Viewer](https://github.com/oiip/oiip-data-viewer) for information about the client.
 
-<img src="images/oiip_data_viewer.png" width="900">
+![OIIP Data Viewer](images/oiip_data_viewer.png)
 
