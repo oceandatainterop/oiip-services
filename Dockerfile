@@ -7,7 +7,6 @@ RUN yum install -y wget unzip lsof && \
 ENV JAVA_HOME /usr/lib/jvm/java-1.8.0
 ENV GEOSERVER_HOME /home/oiip/geoserver/
 RUN mkdir /home/oiip
-RUN mkdir /home/oiip/oiip-services
 RUN mkdir -p /var/www
 
 # Install and start GeoServer
@@ -24,13 +23,6 @@ WORKDIR /home/oiip/
 RUN wget "http://archive.apache.org/dist/lucene/solr/6.4.2/solr-6.4.2.tgz"
 RUN tar -xvzf solr-6.4.2.tgz
 RUN ln -s solr-6.4.2 solr
-
-# Clone oiip-services repo and copy files
-COPY ./ /home/oiip/oiip-services/
-WORKDIR /home/oiip/oiip-services/
-RUN cp -R geoserver/data_dir/data/shapefiles /home/oiip/geoserver/data_dir/data/
-RUN cp -R geoserver/data_dir/workspaces/oiip /home/oiip/geoserver/data_dir/workspaces/
-RUN cp -R solr/oiip /home/oiip/solr/server/solr/
 
 # Start services
 WORKDIR /home/oiip/

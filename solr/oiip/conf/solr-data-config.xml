@@ -17,17 +17,17 @@
 
 <dataConfig>
     <dataSource driver="org.postgresql.Driver"
-        url="jdbc:postgresql://localhost:5432/tagbase"
+        url="jdbc:postgresql://host.docker.internal:5432/tagbase"
         name="tagbase"
         user="tagbase"
         password="" />
     <dataSource driver="org.postgresql.Driver"
-    	url="jdbc:postgresql://localhost:5432/spurs"
+    	url="jdbc:postgresql://host.docker.internal:5432/spurs"
     	name="spurs"
     	user="spurs"
     	password="" />
     <dataSource driver="org.postgresql.Driver"
-    	url="jdbc:postgresql://localhost:5432/saildrone"
+    	url="jdbc:postgresql://host.docker.internal:5432/saildrone"
     	name="saildrone"
     	user="saildrone"
     	password="" />
