@@ -62,7 +62,7 @@ The [managed_schema](solr/oiip/conf/managed_schema) in [solr/oiip/conf](solr/oii
 
 The [solr-data-config.xml](solr/oiip/conf/solr-data-config.xml) file in [solr/oiip/conf](solr/oiip/conf) contains the data configuration and connection information to PostGIS tables. It is currently configured to three databases: **tagbase**, **spurs**, and **saildrone**. The passwords are omitted for security reasons.
 
-Each **entity** generally maps to a database query to one table, but *mview_vis_titles* contains a join. These are the four common entities that are used:
+Each **entity** generally maps to a database query to one table, but *mview_vis_titles* contains a join. These are the two common entities that are used:
 
 * mview\_vis\_data\_tabular: Contains the data from *mview_vis_data_tabular* in tabular form
 
@@ -70,23 +70,17 @@ Each **entity** generally maps to a database query to one table, but *mview_vis_
 SELECT 'tagbase_data_'||row_number() OVER () as id, 'tagbase' as project, 'data' as datatype, * FROM public.mview_vis_data_tabular;
 ```
 
-* mview\_vis\_pointdata: Contains the data from *mview_vis_data* with data measurements group into arrays
-
-```
-SELECT concat_ws('-','tagbase_pointdata',source_id,extract(epoch from measurement_date_time)) as id, 'tagbase' as project, 'pointdata' as datatype, source_id, extract(epoch from measurement_date_time) as epoch_time, lat, lon, depth, array_to_string(array_agg(measurement_name),'|') as measurement_name_arr, array_to_string(array_agg(measurement_value),'|') as measurement_value_arr, array_to_string(array_agg(measurement_units),'|') as measurement_units_arr FROM mview_vis_data  GROUP BY source_id,  extract(epoch from measurement_date_time), lat, lon, depth;
-```
-
-* mview\_vis\_metadata: Contains the metadata about variables and attributes from *mview_vis_metadata*
-
-```
-SELECT 'tagbase_metadata_'||row_number() OVER () as id, 'tagbase' as project, 'metadata' as datatype, source_id, attribute_type, variable, category, attribute_name, attribute_value from mview_vis_metadata;
-```
-
-* mview\_vis\_titles: Contains the summary information of indvidual datasets from *mview_vis_titles* joined with its list of variables found in *mview_vis_variables*
+* mview\_vis\_titles: Contains the summary information of individual datasets from *mview_vis_titles* joined with its list of variables found in *mview_vis_variables*
 
 ```
 SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,trim(platform)) as track_id, 'track' as datatype, trim(platform) as platform, 'tagbase' as project, trim(project) as instrument, trim(instrument) as mission, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',split_part(meastype1, ' (', 1),split_part(meastype2, ' (', 1),split_part(meastype3, ' (', 1),split_part(meastype4, ' (', 1),split_part(meastype5, ' (', 1),split_part(meastype6, ' (', 1),split_part(meastype7, ' (', 1),split_part(meastype8, ' (', 1),split_part(meastype9, ' (', 1),split_part(meastype10, ' (', 1)) as variables, concat_ws('|',substring(meastype1 from '\((.+)\)'),substring(meastype2 from '\((.+)\)'),substring(meastype3 from '\((.+)\)'),substring(meastype4 from '\((.+)\)'),substring(meastype5 from '\((.+)\)'),substring(meastype6 from '\((.+)\)'),substring(meastype7 from '\((.+)\)'),substring(meastype8 from '\((.+)\)'),substring(meastype9 from '\((.+)\)'),substring(meastype10 from '\((.+)\)')) as variables_units, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
 ```
+
+The following entities are not required but can be used if needed:
+* mview\_vis\_data: Contains the data from mview\_vis\_data with data measurements group into arrays
+* mview\_vis\_data_histogram: Contains the data from mview\_vis\_data\_histogram
+* mview\_vis\_data_profile: Contains the data from mview\_vis\_data\_profile
+* mview\_vis\_metadata: Contains the metadata about variables and attributes from mview\_vis\_metadata
 
 **Data Import**
 
@@ -128,13 +122,16 @@ OIIP data is stored in a PostGIS database. This repository does not contain conf
 
 Included in this repository under [sql/](sql/) are the SQL CREATE scripts for generating the materialized views that are used by Solr and GeoServer.
 
+* **mview_vis_geom**
+* **mview_vis_titles**
+* **mview_vis_variables**
+* **mview_vis_data_tabular**
+* mview\_vis\_data
 * mview\_vis\_data_histogram
 * mview\_vis\_data_profile
-* mview\_vis\_data_tabular
-* mview\_vis\_data
-* mview\_vis\_geom
-* mview\_vis\_titles
-* mview\_vis\_variables
+* mview\_vis\_metadata
+
+The **bold** views are the only ones required by either Solr or GeoServer.
 
 Note that each "project" should have its own database and set of views.
 
