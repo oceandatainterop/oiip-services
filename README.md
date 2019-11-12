@@ -46,7 +46,7 @@ OIIP Services relies on the following components:
 
 ![OIIP Architecture](images/oiip_architecture.png)
 
-#### Solr
+### Solr
 
 OIIP data is indexed into Solr for high perfomance data queries. It is used by the OIIP Data Viewer primarily for charting and search.
 
@@ -73,7 +73,7 @@ SELECT 'tagbase_data_'||row_number() OVER () as id, 'tagbase' as project, 'data'
 * mview\_vis\_titles: Contains the summary information of individual datasets from *mview_vis_titles* joined with its list of variables found in *mview_vis_variables*
 
 ```
-SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,trim(platform)) as track_id, 'track' as datatype, trim(platform) as platform, 'tagbase' as project, trim(project) as instrument, trim(instrument) as mission, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',split_part(meastype1, ' (', 1),split_part(meastype2, ' (', 1),split_part(meastype3, ' (', 1),split_part(meastype4, ' (', 1),split_part(meastype5, ' (', 1),split_part(meastype6, ' (', 1),split_part(meastype7, ' (', 1),split_part(meastype8, ' (', 1),split_part(meastype9, ' (', 1),split_part(meastype10, ' (', 1)) as variables, concat_ws('|',substring(meastype1 from '\((.+)\)'),substring(meastype2 from '\((.+)\)'),substring(meastype3 from '\((.+)\)'),substring(meastype4 from '\((.+)\)'),substring(meastype5 from '\((.+)\)'),substring(meastype6 from '\((.+)\)'),substring(meastype7 from '\((.+)\)'),substring(meastype8 from '\((.+)\)'),substring(meastype9 from '\((.+)\)'),substring(meastype10 from '\((.+)\)')) as variables_units, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;"
+SELECT 'tagbase_track_'||row_number() OVER () as id, concat_ws('|','tagbase',mview_vis_titles.source_id,trim(platform)) as track_id, 'track' as datatype, trim(platform) as platform, 'tagbase' as project, trim(project) as instrument, trim(instrument) as mission, extract(epoch from meastime_min) as start_date, extract(epoch from meastime_max) as end_date, lat_min, lat_max, lon_min, lon_max, descriptions as description, concat_ws('|',split_part(meastype1, ' (', 1),split_part(meastype2, ' (', 1),split_part(meastype3, ' (', 1),split_part(meastype4, ' (', 1),split_part(meastype5, ' (', 1),split_part(meastype6, ' (', 1),split_part(meastype7, ' (', 1),split_part(meastype8, ' (', 1),split_part(meastype9, ' (', 1),split_part(meastype10, ' (', 1)) as variables, concat_ws('|',substring(meastype1 from '\((.+)\)'),substring(meastype2 from '\((.+)\)'),substring(meastype3 from '\((.+)\)'),substring(meastype4 from '\((.+)\)'),substring(meastype5 from '\((.+)\)'),substring(meastype6 from '\((.+)\)'),substring(meastype7 from '\((.+)\)'),substring(meastype8 from '\((.+)\)'),substring(meastype9 from '\((.+)\)'),substring(meastype10 from '\((.+)\)')) as variables_units, mview_vis_titles.source_id FROM mview_vis_titles, mview_vis_variables WHERE mview_vis_titles.source_id = mview_vis_variables.source_id;
 ```
 
 The following entities are not required but can be used if needed:
@@ -86,8 +86,12 @@ The following entities are not required but can be used if needed:
 
 Importing data into the Solr index can be done manually via the [Dataimport interface](http://localhost:8983/solr/#/oiip/dataimport//dataimport). Ensure that the Data Configuration is correct and include relevant connection information and passwords. Hit **Execute** to begin the data import.
 
+**Alternative**
 
-#### GeoServer
+Rather than using Solr, a light database service that queries the appropriate materialized views could be used. Solr may have better search performance and security abstraction, but comes at a cost of more complicated infrastructure and additional data replication.
+
+
+### GeoServer
 
 GeoServer provides GIS data services for OIIP. It is the primary map server for the OIIP Data Viewer.
 
@@ -116,7 +120,7 @@ Several layers and their Shapefiles are available in this code repository.
 
 The **saildrone**, **spurs**, and **tagbase** layers use a connection to the **mview_vis_geom** materialized view, which contains the spatiotemporal information for tracks. Other track metadata is excluded as that information can be queried from Solr with better performance.
 
-#### PostGIS
+### PostGIS
 
 OIIP data is stored in a PostGIS database. This repository does not contain configurations or data for PostGIS. Other databases supporting spatial data types should work as well.
 
