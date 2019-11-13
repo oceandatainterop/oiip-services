@@ -99,24 +99,20 @@ All OIIP associated data uses the **oiip** workspace.
 
 The passwords are omitted in the data [Stores](http://localhost:8080/geoserver/web/wicket/bookmarkable/org.geoserver.web.data.store.StorePage?5) for security reasons. Update as necessary for the **tagbase**, **spurs**, and **saildrone** stores.
 
-Several layers and their Shapefiles are available in this code repository.
+Several layers and their Shapefiles are used by OIIP Services.
 
-* eez
-* eez\_boundaries
-* eez\_lr
-* err\_poly\_tagbase_4
-* err\_tagbase_4
-* fao
-* iho
-* layergroups
-* ne\_10m\_ocean
-* saildrone
-* spurs
-* styles
-* tagbase
-* world\_borders
-* World\_EEZ_v8_2014
-* World\_Seas
+* err\_poly\_tagbase_4: Sample track error polygons
+* err\_tagbase_4: Sample track error points
+* FAO_AREAS: From [www.fao.org](http://www.fao.org:80/figis/geoserver/area/ows?service=WFS&request=GetFeature&version=1.0.0&typeName=area:FAO_AREAS&outputFormat=SHAPE-ZIP)
+* ne\_10m\_ocean: From [www.naturalearthdata.com/downloads/10m-physical-vectors/10m-ocean/](https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-ocean/)
+* saildrone: PostGIS mview\_vis\_geom materialized view
+* spurs: PostGIS mview\_vis\_geom materialized view
+* tagbase: PostGIS mview\_vis\_geom materialized view
+* world\_borders: From [http://thematicmapping.org/downloads/TM_WORLD_BORDERS-0.3.zip](http://thematicmapping.org/downloads/TM_WORLD_BORDERS-0.3.zip)
+
+From [http://www.marineregions.org/downloads.php](http://www.marineregions.org/downloads.php) (please download Shapefiles from there):
+* World\_EEZ\_v8\_2014
+* World\_Seas\_IHO\_v2
 
 The **saildrone**, **spurs**, and **tagbase** layers use a connection to the **mview_vis_geom** materialized view, which contains the spatiotemporal information for tracks. Other track metadata is excluded as that information can be queried from Solr with better performance.
 
