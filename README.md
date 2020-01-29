@@ -60,7 +60,7 @@ The [managed_schema](solr/oiip/conf/managed_schema) in [solr/oiip/conf](solr/oii
 
 **Data Configuration**
 
-The [solr-data-config.xml](solr/oiip/conf/solr-data-config.xml) file in [solr/oiip/conf](solr/oiip/conf) contains the data configuration and connection information to PostGIS tables. It is currently configured to three databases: **tagbase**, **spurs**, and **saildrone**. The passwords are omitted for security reasons.
+The [solr-data-config.xml](solr/oiip/conf/solr-data-config.xml) file in [solr/oiip/conf](solr/oiip/conf) contains the data configuration and connection information to PostGIS tables. It is currently configured to three databases: **tagbase**, **taghost**, **spurs**, and **saildrone**. The passwords are omitted for security reasons.
 
 Each **entity** generally maps to a database query to one table, but *mview_vis_titles* contains a join. These are the two common entities that are used:
 
@@ -97,7 +97,7 @@ GeoServer provides GIS data services for OIIP. It is the primary map server for 
 
 All OIIP associated data uses the **oiip** workspace.
 
-The passwords are omitted in the data [Stores](http://localhost:8080/geoserver/web/wicket/bookmarkable/org.geoserver.web.data.store.StorePage?5) for security reasons. Update as necessary for the **tagbase**, **spurs**, and **saildrone** stores.
+The passwords are omitted in the data [Stores](http://localhost:8080/geoserver/web/wicket/bookmarkable/org.geoserver.web.data.store.StorePage?5) for security reasons. Update as necessary for the **tagbase**, **taghost**, **spurs**, and **saildrone** stores.
 
 Several layers and their Shapefiles are used by OIIP Services.
 
@@ -108,13 +108,14 @@ Several layers and their Shapefiles are used by OIIP Services.
 * saildrone: PostGIS mview\_vis\_geom materialized view
 * spurs: PostGIS mview\_vis\_geom materialized view
 * tagbase: PostGIS mview\_vis\_geom materialized view
+* taghost: PostGIS mview\_vis\_geom materialized view
 * world\_borders: From [http://thematicmapping.org/downloads/TM_WORLD_BORDERS-0.3.zip](http://thematicmapping.org/downloads/TM_WORLD_BORDERS-0.3.zip)
 
 From [http://www.marineregions.org/downloads.php](http://www.marineregions.org/downloads.php) (please download Shapefiles from there):
 * World\_EEZ\_v8\_2014
 * World\_Seas\_IHO\_v2
 
-The **saildrone**, **spurs**, and **tagbase** layers use a connection to the **mview_vis_geom** materialized view, which contains the spatiotemporal information for tracks. Other track metadata is excluded as that information can be queried from Solr with better performance.
+The **saildrone**, **spurs**, **taghost**, and **tagbase** layers use a connection to the **mview_vis_geom** materialized view, which contains the spatiotemporal information for tracks. Other track metadata is excluded as that information can be queried from Solr with better performance.
 
 ### PostGIS
 
