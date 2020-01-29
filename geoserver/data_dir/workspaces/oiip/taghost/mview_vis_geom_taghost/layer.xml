@@ -1,0 +1,15 @@
+<layer>
+  <name>mview_vis_geom_taghost</name>
+  <id>LayerInfoImpl-1c2523e3:16ff27bb966:1353</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fdf</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-1c2523e3:16ff27bb966:1352</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>
