@@ -423,6 +423,7 @@
   <field name="content" type="text_general" multiValued="true" indexed="false" stored="true"/>
   <field name="content_type" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="data_date_time" type="date" indexed="true" stored="true"/>
+  <field name="database" type="string" indexed="true" stored="true"/>
   <field name="datatype" type="string" indexed="true" stored="true"/>
   <field name="date_time" type="descendent_path" indexed="true" stored="true"/>
   <field name="depth" type="double" indexed="true" stored="true"/>
@@ -468,10 +469,12 @@
   <field name="nc_id" type="lowercase" indexed="true" stored="true"/>
   <field name="payloads" type="payloads" indexed="true" stored="true"/>
   <field name="platform" type="string" indexed="true" stored="true"/>
+  <field name="platform_id" type="string" indexed="true" stored="true"/>
   <field name="platform_name" type="string" indexed="true" stored="true"/>
   <field name="popularity" type="int" indexed="true" stored="true"/>
   <field name="position_date_time" type="date" indexed="true" stored="true"/>
   <field name="price" type="float" indexed="true" stored="true"/>
+  <field name="program" type="string" indexed="true" stored="true"/>
   <field name="project" type="string" indexed="true" stored="true"/>
   <field name="resourcename" type="text_general" indexed="true" stored="true"/>
   <field name="row_number" type="long" indexed="true" stored="true"/>
