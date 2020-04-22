@@ -446,6 +446,9 @@
   <field name="lat_err" type="double" indexed="true" stored="true"/>
   <field name="lat_max" type="double" indexed="true" stored="true"/>
   <field name="lat_min" type="double" indexed="true" stored="true"/>
+  <field name="latency" type="double" indexed="true" stored="true"/>
+  <field name="layer_id" type="string" indexed="true" stored="true"/>
+  <field name="level" type="int" indexed="true" stored="true"/>
   <field name="links" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="lon" type="double" indexed="true" stored="true"/>
   <field name="lon_err" type="double" indexed="true" stored="true"/>
@@ -474,10 +477,14 @@
   <field name="popularity" type="int" indexed="true" stored="true"/>
   <field name="position_date_time" type="date" indexed="true" stored="true"/>
   <field name="price" type="float" indexed="true" stored="true"/>
+  <field name="producer" type="string" indexed="true" stored="true"/>
   <field name="program" type="string" indexed="true" stored="true"/>
   <field name="project" type="string" indexed="true" stored="true"/>
+  <field name="resolution_spatial" type="double" indexed="true" stored="true"/>
+  <field name="resolution_temporal" type="double" indexed="true" stored="true"/>
   <field name="resourcename" type="text_general" indexed="true" stored="true"/>
   <field name="row_number" type="long" indexed="true" stored="true"/>
+  <field name="service_url" type="string" indexed="true" stored="true"/>
   <field name="sku" type="text_en_splitting_tight" omitNorms="true" indexed="true" stored="true"/>
   <field name="source_id" type="long" indexed="true" stored="true"/>
   <field name="start_date" type="int" indexed="true" stored="true"/>
