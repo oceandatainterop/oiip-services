@@ -447,7 +447,7 @@
   <field name="lat_max" type="double" indexed="true" stored="true"/>
   <field name="lat_min" type="double" indexed="true" stored="true"/>
   <field name="latency" type="double" indexed="true" stored="true"/>
-  <field name="layer_id" type="string" indexed="true" stored="true"/>
+  <field name="layer_id" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="level" type="int" indexed="true" stored="true"/>
   <field name="links" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="lon" type="double" indexed="true" stored="true"/>

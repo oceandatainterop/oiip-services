@@ -184,7 +184,7 @@
             <field column="latency" name="latency" />
             <field column="producer" name="producer" />
             <field column="level" name="level" />
-            <field column="layer_id" name="layer_id" />
+            <field column="layer_id"  splitBy="\|" sourceColName="layer_id" />
             <field column="service_url" name="service_url" />
             <field column="variables" splitBy="\|" sourceColName="variables"/>
             <field column="variables_units" splitBy="\|" sourceColName="variables_units"/>
