@@ -166,12 +166,12 @@
             <field column="id" name="id" />
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
-            <field column="platform" name="platform" />
+            <field column="platform" splitBy="\|" sourceColName="platform"/>
             <field column="platform_id" name="platform_id" />
             <field column="project" name="project" />
             <field column="program" name="program" />
-            <field column="mission" name="mission" />
-            <field column="instrument" name="instrument" />
+            <field column="mission" splitBy="\|" sourceColName="mission" />
+            <field column="instrument" splitBy="\|" sourceColName="instrument" />
             <field column="start_date" name="start_date" />
             <field column="end_date" name="end_date" />
             <field column="lat_min" name="lat_min" />
@@ -184,7 +184,7 @@
             <field column="latency" name="latency" />
             <field column="producer" name="producer" />
             <field column="level" name="level" />
-            <field column="layer_id"  splitBy="\|" sourceColName="layer_id" />
+            <field column="layer_id" splitBy="\|" sourceColName="layer_id" />
             <field column="service_url" name="service_url" />
             <field column="variables" splitBy="\|" sourceColName="variables"/>
             <field column="variables_units" splitBy="\|" sourceColName="variables_units"/>
