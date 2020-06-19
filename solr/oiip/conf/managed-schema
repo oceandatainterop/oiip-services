@@ -419,6 +419,7 @@
   <field name="bin_id" type="long" indexed="true" stored="true"/>
   <field name="cat" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="category" type="text_general" indexed="true" stored="true"/>
+  <field name="colorbar_url" type="string" multiValued="true" indexed="true" stored="true"/>
   <field name="comments" type="text_general" indexed="true" stored="true"/>
   <field name="content" type="text_general" multiValued="true" indexed="false" stored="true"/>
   <field name="content_type" type="string" multiValued="true" indexed="true" stored="true"/>
