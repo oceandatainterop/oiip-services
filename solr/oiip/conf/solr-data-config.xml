@@ -65,12 +65,12 @@
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
             <field column="title" name="title" />
-            <field column="platform" name="platform" />
+            <field column="platform" splitBy="\|" sourceColName="platform"/>
             <field column="platform_id" name="platform_id" />
             <field column="project" name="project" />
             <field column="program" name="program" />
-            <field column="mission" name="mission" />
-            <field column="instrument" name="instrument" />
+            <field column="mission" splitBy="\|" sourceColName="mission" />
+            <field column="instrument" splitBy="\|" sourceColName="instrument" />
             <field column="start_date" name="start_date" />
             <field column="end_date" name="end_date" />
             <field column="lat_min" name="lat_min" />
@@ -98,12 +98,12 @@
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
             <field column="title" name="title" />
-            <field column="platform" name="platform" />
+            <field column="platform" splitBy="\|" sourceColName="platform"/>
             <field column="platform_id" name="platform_id" />
-            <field column="mission" name="mission" />
+            <field column="mission" splitBy="\|" sourceColName="mission" />
             <field column="project" name="project" />
             <field column="program" name="program" />
-            <field column="instrument" name="instrument" />
+            <field column="instrument" splitBy="\|" sourceColName="instrument" />
             <field column="start_date" name="start_date" />
             <field column="end_date" name="end_date" />
             <field column="lat_min" name="lat_min" />
@@ -131,12 +131,12 @@
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
             <field column="title" name="title" />
-            <field column="platform" name="platform" />
+            <field column="platform" splitBy="\|" sourceColName="platform"/>
             <field column="platform_id" name="platform_id" />
-            <field column="mission" name="mission" />
+            <field column="mission" splitBy="\|" sourceColName="mission" />
             <field column="project" name="project" />
             <field column="program" name="program" />
-            <field column="instrument" name="instrument" />
+            <field column="instrument" splitBy="\|" sourceColName="instrument" />
             <field column="start_date" name="start_date" />
             <field column="end_date" name="end_date" />
             <field column="lat_min" name="lat_min" />
@@ -164,12 +164,12 @@
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
             <field column="title" name="title" />
-            <field column="platform" name="platform" />
+            <field column="platform" splitBy="\|" sourceColName="platform"/>
             <field column="platform_id" name="platform_id" />
             <field column="project" name="project" />
             <field column="program" name="program" />
-            <field column="mission" name="mission" />
-            <field column="instrument" name="instrument" />
+            <field column="mission" splitBy="\|" sourceColName="mission" />
+            <field column="instrument" splitBy="\|" sourceColName="instrument" />
             <field column="start_date" name="start_date" />
             <field column="end_date" name="end_date" />
             <field column="lat_min" name="lat_min" />
@@ -197,12 +197,12 @@
             <field column="track_id" name="track_id" />
             <field column="datatype" name="datatype" />
             <field column="title" name="title" />
-            <field column="platform" name="platform" />
+            <field column="platform" splitBy="\|" sourceColName="platform"/>
             <field column="platform_id" name="platform_id" />
             <field column="project" name="project" />
             <field column="program" name="program" />
-            <field column="mission" name="mission" />
-            <field column="instrument" name="instrument" />
+            <field column="mission" splitBy="\|" sourceColName="mission" />
+            <field column="instrument" splitBy="\|" sourceColName="instrument" />
             <field column="start_date" name="start_date" />
             <field column="end_date" name="end_date" />
             <field column="lat_min" name="lat_min" />

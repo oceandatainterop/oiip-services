@@ -480,7 +480,7 @@
   <field name="position_date_time" type="date" indexed="true" stored="true"/>
   <field name="price" type="float" indexed="true" stored="true"/>
   <field name="producer" type="string" indexed="true" stored="true"/>
-  <field name="program" type="text_general" indexed="true" stored="true"/>
+  <field name="program" type="string" indexed="true" stored="true"/>
   <field name="project" type="string" indexed="true" stored="true"/>
   <field name="resolution_spatial" type="double" indexed="true" stored="true"/>
   <field name="resolution_temporal" type="double" indexed="true" stored="true"/>
