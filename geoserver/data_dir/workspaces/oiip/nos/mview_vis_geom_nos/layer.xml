@@ -1,0 +1,15 @@
+<layer>
+  <name>mview_vis_geom_nos</name>
+  <id>LayerInfoImpl-22416c83:17c3db38be2:40d9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fdf</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-22416c83:17c3db38be2:40d8</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>
