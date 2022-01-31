@@ -499,6 +499,7 @@
   <field name="text_rev" type="text_general_rev" multiValued="true" indexed="true" stored="false"/>
   <field name="thumbnail_url" type="string" indexed="true" stored="true"/>
   <field name="time" type="long" indexed="true" stored="true"/>
+  <field name="time_format" type="string" indexed="true" stored="true"/>
   <field name="title" type="text_general" multiValued="true" indexed="true" stored="true"/>
   <field name="track_id" type="string" indexed="true" stored="true"/>
   <field name="type" type="string" indexed="true" stored="true"/>
