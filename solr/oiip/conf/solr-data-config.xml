@@ -62,10 +62,10 @@
     	user="coverage_metadata"
     	password="" />
     <document name="oiip">
-        <entity name="mview_dataset_metadata" pk="id" dataSource="coverage_metadata"
-            query="SELECT concat_ws('_','metadata',iddataset,idmetadatafield) as id, iddataset, idmetadatafield, fieldname, fieldvalue FROM public.mview_dataset_metadata;"
-            deltaImportQuery="SELECT concat_ws('_','metadata',iddataset,idmetadatafield) as id, iddataset, idmetadatafield, fieldname, fieldvalue FROM public.mview_dataset_metadata where fieldvalue = '${dih.delta.id}';"
-            deltaQuery="SELECT concat_ws('_','metadata',iddataset,idmetadatafield) as id, iddataset, idmetadatafield, fieldname, fieldvalue FROM public.mview_dataset_metadata where last_modified &gt; '${dih.last_index_time}';">
+        <entity name="mview_metadata_columns" pk="id" dataSource="coverage_metadata"
+            query="SELECT concat_ws('_','metadata',iddataset) as id, * FROM public.mview_metadata_columns;"
+            deltaImportQuery="SELECT * FROM public.mview_metadata_columns where id = '${dih.delta.id}';"
+            deltaQuery="SELECT * FROM public.mview_metadata_columns where last_modified &gt; '${dih.last_index_time}';">
         </entity>
         <entity name="mview_vis_data_tabular" pk="id" dataSource="tagbase"
             query="SELECT 'tagbase_data_'||row_number() OVER () as id, 'tagbase' as project, 'data' as datatype, * FROM public.mview_vis_data_tabular;"
