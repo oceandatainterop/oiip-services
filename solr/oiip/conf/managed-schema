@@ -433,11 +433,15 @@
   <field name="end_date" type="int" indexed="true" stored="true"/>
   <field name="epoch_time" type="int" indexed="true" stored="true"/>
   <field name="features" type="text_general" multiValued="true" indexed="true" stored="true"/>
+  <field name="fieldname" type="text_general" indexed="true" stored="true"/>
+  <field name="fieldvalue" type="text_general" indexed="true" stored="true"/>
   <field name="geom" type="location" indexed="true" stored="true"/>
   <field name="handle_as" type="string" indexed="true" stored="true"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="id_instrument" type="long" indexed="true" stored="true"/>
   <field name="id_platform" type="long" indexed="true" stored="true"/>
+  <field name="iddataset" type="int" indexed="true" stored="true"/>
+  <field name="idmetadatafield" type="int" indexed="true" stored="true"/>
   <field name="inStock" type="boolean" indexed="true" stored="true"/>
   <field name="includes" type="text_general" termPositions="true" termVectors="true" indexed="true" termOffsets="true" stored="true"/>
   <field name="instrument" type="string" multiValued="true" indexed="true" stored="true"/>
@@ -480,8 +484,8 @@
   <field name="position_date_time" type="date" indexed="true" stored="true"/>
   <field name="price" type="float" indexed="true" stored="true"/>
   <field name="producer" type="string" indexed="true" stored="true"/>
-  <field name="program" type="string" indexed="true" stored="true"/>
-  <field name="project" type="string" indexed="true" stored="true"/>
+  <field name="program" type="text_general" indexed="true" stored="true"/>
+  <field name="project" type="text_general" indexed="true" stored="true"/>
   <field name="resolution_spatial" type="double" indexed="true" stored="true"/>
   <field name="resolution_temporal" type="double" indexed="true" stored="true"/>
   <field name="resourcename" type="text_general" indexed="true" stored="true"/>
