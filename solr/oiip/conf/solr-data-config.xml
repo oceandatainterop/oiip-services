@@ -62,18 +62,18 @@
     	user="coverage_metadata"
     	password="" />
     <document name="oiip">
-        <entity name="mview_metadata_columns" pk="id" dataSource="coverage_metadata"
+        <entity name="mview_metadata_columns" pk="id" dataSource="coverage_metadata" transformer="RegexTransformer"
             query="SELECT concat_ws('_','metadata',iddataset) as id, * FROM public.mview_metadata_columns;"
             deltaImportQuery="SELECT * FROM public.mview_metadata_columns where id = '${dih.delta.id}';"
             deltaQuery="SELECT * FROM public.mview_metadata_columns where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="iddataset" name="iddataset" />
-            <field column="categories_ss" splitBy="," sourceColName="categories_ss"/>
+            <field column="categories_ss" splitBy=", " sourceColName="categories"/>
             <field column="data_access_endpoints_resourceurl1_viewer_s" name="data_access_endpoints_resourceurl1_viewer_s" />
             <field column="data_access_endpoints_resourceurl2_sdap_s" name="data_access_endpoints_resourceurl2_sdap_s" />
             <field column="data_access_endpoints_resourceurl3_tds_s" name="data_access_endpoints_resourceurl3_tds_s" />
-            <field column="data_access_endpoints_resourceurl4_nccs_s" sourceColName="data_access_endpoints_resourceurl4_nccs_s" />
-            <field column="data_access_endpoints_resourceurl5_opendap_s" sourceColName="data_access_endpoints_resourceurl5_opendap_s" />
+            <field column="data_access_endpoints_resourceurl4_nccs_s" name="data_access_endpoints_resourceurl4_nccs_s" />
+            <field column="data_access_endpoints_resourceurl5_opendap_s" name="data_access_endpoints_resourceurl5_opendap_s" />
             <field column="data_access_endpoints_resourceurl6_wms_s" name="data_access_endpoints_resourceurl6_wms_s" />
             <field column="data_access_endpoints_resourceurl7_wmts_s" name="data_access_endpoints_resourceurl7_wmts_s" />
             <field column="data_access_endpoints_resourceurl8_iso_s" name="data_access_endpoints_resourceurl8_iso_s" />
@@ -82,26 +82,26 @@
             <field column="documentation_s" name="documentation_s" />
             <field column="doi_s" name="doi_s" />
             <field column="file_format_s" name="file_format_s" />
-            <field column="keywords_ss" splitBy="," name="keywords_ss" />
+            <field column="keywords_ss" splitBy=", " sourceColName="keywords_ss" />
             <field column="latency_s" name="latency_s" />
             <field column="metadata_source_s" name="metadata_source_s" />
-            <field column="metdatasource_url_s" sourceColName="metdatasource_url_s"/>
-            <field column="observation_type_s" sourceColName="observation_type_s"/>
+            <field column="metdatasource_url_s" name="metdatasource_url_s"/>
+            <field column="observation_type_s" name="observation_type_s"/>
             <field column="parameter_s" name="parameter_s" />
-            <field column="platform_ss" splitBy="," name="platform_ss" />
+            <field column="platform_ss" splitBy=", " SourceColName="platform_ss" />
             <field column="processing_level_s" name="processing_level_s" />
-            <field column="project_ss" splitBy="," name="project_ss" />
-            <field column="provider_s" sourceColName="provider_s"/>
-            <field column="sensor_ss" splitBy="," sourceColName="sensor_ss"/>
+            <field column="project_ss" splitBy=", " SourceColName="project_ss" />
+            <field column="provider_s" name="provider_s"/>
+            <field column="sensor_ss" splitBy=", " sourceColName="sensor_ss"/>
             <field column="shortname_s" name="shortname_s" />
             <field column="spatial_extent_s" name="spatial_extent_s" />
             <field column="spatial_resolution_s" name="spatial_resolution_s" />
             <field column="spatial_type_s" name="spatial_type_s" />
-            <field column="temporal_extent_s" sourceColName="temporal_extent_s"/>
-            <field column="temporal_resolution_s" sourceColName="temporal_resolution_s"/>
+            <field column="temporal_extent_s" name="temporal_extent_s"/>
+            <field column="temporal_resolution_s" name="temporal_resolution_s"/>
             <field column="thumbnail_url_s" name="thumbnail_url_s" />
-            <field column="title_s" sourceColName="title_s"/>
-            <field column="version_s" splitBy="," sourceColName="version_s"/>
+            <field column="title_s" name="title_s"/>
+            <field column="version_s" name="version_s"/>
         </entity>
         <entity name="mview_vis_data_tabular" pk="id" dataSource="tagbase"
             query="SELECT 'tagbase_data_'||row_number() OVER () as id, 'tagbase' as project, 'data' as datatype, * FROM public.mview_vis_data_tabular;"
