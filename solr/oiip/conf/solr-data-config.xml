@@ -68,7 +68,7 @@
             deltaQuery="SELECT * FROM public.mview_metadata_columns where last_modified &gt; '${dih.last_index_time}';">
             <field column="id" name="id" />
             <field column="iddataset" name="iddataset" />
-            <field column="categories_ss" splitBy=", " sourceColName="categories"/>
+            <field column="categories_ss" splitBy=", " sourceColName="categories_ss"/>
             <field column="data_access_endpoints_resourceurl1_viewer_s" name="data_access_endpoints_resourceurl1_viewer_s" />
             <field column="data_access_endpoints_resourceurl2_sdap_s" name="data_access_endpoints_resourceurl2_sdap_s" />
             <field column="data_access_endpoints_resourceurl3_tds_s" name="data_access_endpoints_resourceurl3_tds_s" />
@@ -87,7 +87,7 @@
             <field column="metadata_source_s" name="metadata_source_s" />
             <field column="metdatasource_url_s" name="metdatasource_url_s"/>
             <field column="observation_type_s" name="observation_type_s"/>
-            <field column="parameter_s" name="parameter_s" />
+            <field column="parameter_ss" splitBy=", " SourceColName="parameter_ss" />
             <field column="platform_ss" splitBy=", " SourceColName="platform_ss" />
             <field column="processing_level_s" name="processing_level_s" />
             <field column="project_ss" splitBy=", " SourceColName="project_ss" />
